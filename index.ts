@@ -1,12 +1,12 @@
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
 
-const flowJwtToken = process.env.FLOW_JWT_TOKEN;
-
-if (!flowJwtToken) {
-	throw new Error("Missing FLOW_JWT_TOKEN environment variable");
-}
-
 export default function (pi: ExtensionAPI) {
+	const flowJwtToken = process.env.FLOW_JWT_TOKEN;
+
+	if (!flowJwtToken) {
+		throw new Error("Missing FLOW_JWT_TOKEN environment variable");
+	}
+
 	pi.registerProvider("ciandt-flow", {
 		baseUrl: "https://flow.ciandt.com/flow-llm-proxy",
 		apiKey: flowJwtToken,
